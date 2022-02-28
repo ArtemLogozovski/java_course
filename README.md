@@ -1,1 +1,1 @@
-# java_training
+# java_course
