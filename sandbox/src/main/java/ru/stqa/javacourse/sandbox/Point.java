@@ -1,5 +1,4 @@
 package ru.stqa.javacourse.sandbox;
-
 import static java.lang.Math.sqrt;
 
 public class Point {
