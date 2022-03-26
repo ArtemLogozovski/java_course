@@ -1,4 +1,4 @@
-package ru.stqa.javacourse.addressbook;
+package ru.stqa.javacourse.addressbook.model;
 
 public class ContactData {
   private final String firstname;
@@ -29,7 +29,7 @@ public class ContactData {
     return firstname;
   }
 
-  public String getMiddlename() {
+  public String getMiddleName() {
     return middlename;
   }
 
