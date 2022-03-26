@@ -6,7 +6,7 @@ import ru.stqa.javacourse.addressbook.model.ContactData;
 public class ContactCreationTests extends TestBase {
 
   @Test
-  public void testContactCreation() throws Exception {
+  public void testContactCreation() {
     app.getContactHelper().initContactCreation();
     app.getContactHelper().fillContactForm(new ContactData("Petrov", "Ivanov", "Sidorov", "IPS", "test", "testcompany", "Russia", "+73831234578", "+71234567890", "test@test.com"));
     app.getContactHelper().submitContactCreation();
