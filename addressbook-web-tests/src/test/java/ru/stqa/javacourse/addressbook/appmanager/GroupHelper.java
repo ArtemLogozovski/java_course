@@ -6,6 +6,8 @@ import ru.stqa.javacourse.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
 
+  NavigationHelper navigationHelper = new NavigationHelper(wd);
+
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
@@ -52,6 +54,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public boolean isThereAGroup() {
+    navigationHelper.gotoGroupPage();
     return isElementPresent(By.name("selected[]"));
   }
 }

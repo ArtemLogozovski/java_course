@@ -12,6 +12,8 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
+  NavigationHelper navigationHelper = new NavigationHelper(wd);
+
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
@@ -60,7 +62,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 
   public void createContact(ContactData contact, boolean b) {
@@ -71,6 +73,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereAContact() {
+    navigationHelper.gotoToHomePage();
     return isElementPresent(By.xpath("//img[@alt='Edit']"));
   }
 }
