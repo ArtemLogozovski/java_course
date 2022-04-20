@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase{
       app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
     }
     if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"), true);
+      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"));
     }
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", null), false);

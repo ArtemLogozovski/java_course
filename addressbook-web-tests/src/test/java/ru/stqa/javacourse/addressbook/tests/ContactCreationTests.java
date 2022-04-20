@@ -11,7 +11,7 @@ public class ContactCreationTests extends TestBase {
     if (! app.getGroupHelper().isThereAGroup()){
       app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
     }
-    app.getContactHelper().createContact(new ContactData("Petrov", "Ivanov", "Sidorov", "IPS", "test", "testcompany", "Russia", "+73831234578", "+71234567890", "test@test.com", "Test1"), true);
+    app.getContactHelper().createContact(new ContactData("Petrov", "Ivanov", "Sidorov", "IPS", "test", "testcompany", "Russia", "+73831234578", "+71234567890", "test@test.com", "Test1"));
   }
 
 }
