@@ -16,7 +16,28 @@ public class ContactData {
   private final String group;
   private int id;
 
-  public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstname, lastname);
+  }
+
+  public ContactData(int id, String lastname, String firstname, String middlename, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -31,7 +52,7 @@ public class ContactData {
     this.id = id;
   }
 
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
+  public ContactData(String lastname, String firstname, String middlename, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -43,7 +64,7 @@ public class ContactData {
     this.mobilePhoneNumber = mobilePhoneNumber;
     this.email = email;
     this.group = group;
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
   }
 
   public String getFirstname() {
@@ -90,30 +111,8 @@ public class ContactData {
     return id;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(firstname, middlename, id);
-  }
-
   public void setId(int id) {
     this.id = id;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", middlename='" + middlename + '\'' +
-            ", id='" + id + '\'' +
-            '}';
   }
 
   public String getGroup() {

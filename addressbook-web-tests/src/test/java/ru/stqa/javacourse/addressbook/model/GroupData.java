@@ -19,16 +19,7 @@ public class GroupData {
     this.name = name;
     this.header = header;
     this.footer = footer;
-    this.id = 0;
-  }
-
-
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "name='" + name + '\'' +
-            ", id='" + id + '\'' +
-            '}';
+    this.id = Integer.MAX_VALUE;
   }
 
   @Override
@@ -36,12 +27,20 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return id == groupData.id && Objects.equals(name, groupData.name);
+    return Objects.equals(name, groupData.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, id);
+    return Objects.hash(name);
+  }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "name='" + name + '\'' +
+            ", id='" + id + '\'' +
+            '}';
   }
 
   public int getId() {
