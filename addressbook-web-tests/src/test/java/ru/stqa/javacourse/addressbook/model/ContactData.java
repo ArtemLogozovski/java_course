@@ -14,14 +14,9 @@ public class ContactData {
   private final String mobilePhoneNumber;
   private final String email;
   private final String group;
+  private int id;
 
-  public String getId() {
-    return id;
-  }
-
-  private final String id;
-
-  public ContactData(String id, String firstname, String middlename, String lastname, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
+  public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String title, String companyName, String address, String homePhoneNumber, String mobilePhoneNumber, String email, String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -48,7 +43,7 @@ public class ContactData {
     this.mobilePhoneNumber = mobilePhoneNumber;
     this.email = email;
     this.group = group;
-    this.id = null;
+    this.id = 0;
   }
 
   public String getFirstname() {
@@ -91,13 +86,8 @@ public class ContactData {
     return email;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", middlename='" + middlename + '\'' +
-            ", id='" + id + '\'' +
-            '}';
+  public int getId() {
+    return id;
   }
 
   @Override
@@ -105,12 +95,25 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(id, that.id);
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename);
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(firstname, middlename, id);
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", middlename='" + middlename + '\'' +
+            ", id='" + id + '\'' +
+            '}';
   }
 
   public String getGroup() {
