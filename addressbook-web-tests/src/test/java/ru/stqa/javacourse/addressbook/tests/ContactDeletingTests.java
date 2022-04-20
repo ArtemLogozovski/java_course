@@ -15,11 +15,11 @@ public class ContactDeletingTests extends TestBase {
       app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
     }
     if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"), true);
+      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"));
     }
     app.getNavigationHelper().gotoToHomePage();
     List<ContactData> before = app.getContactHelper().getContactsList();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().submitDeletingContacts();
     app.getNavigationHelper().gotoToHomePage();
