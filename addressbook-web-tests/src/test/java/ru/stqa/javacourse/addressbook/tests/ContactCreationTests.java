@@ -7,26 +7,25 @@ import ru.stqa.javacourse.addressbook.model.ContactData;
 import ru.stqa.javacourse.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions () {
-    app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereAGroup()){
-      app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
+    app.goTo().groupPage();
+    if (app.group().list().size() == 0){
+      app.group().create(new GroupData("Test1", null, null));
     }
   }
 
   @Test
   public void testContactCreation() {
-    app.getNavigationHelper().gotoToHomePage();
-    List<ContactData> before = app.getContactHelper().getContactsList();
+    app.goTo().homePage();
+    List<ContactData> before = app.contact().list();
     ContactData contact = new ContactData("Test1", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1");
-    app.getContactHelper().createContact(contact);
-    List <ContactData> after = app.getContactHelper().getContactsList();
+    app.contact().create(contact);
+    List <ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     before.add(contact);

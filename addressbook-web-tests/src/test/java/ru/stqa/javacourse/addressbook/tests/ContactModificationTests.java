@@ -7,29 +7,28 @@ import ru.stqa.javacourse.addressbook.model.ContactData;
 import ru.stqa.javacourse.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase{
 
   @BeforeMethod
   public void ensurePreconditions () {
-    if (! app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
+    if (app.group().list().size() == 0) {
+      app.group().create(new GroupData("Test1", null, null));
     }
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"));
+    if (app.contact().list().size() == 0) {
+      app.contact().create(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"));
     }
   }
 
   @Test
   public void testContactModification() {
-    app.getNavigationHelper().gotoToHomePage();
-    List <ContactData> before = app.getContactHelper().getContactsList();
+    app.goTo().homePage();
+    List <ContactData> before = app.contact().list();
     int index = before.size() - 1;
     ContactData contact = new ContactData(before.get(index).getId(),"Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", null);
-    app.getContactHelper().modifyContact(index, contact);
-    List <ContactData> after = app.getContactHelper().getContactsList();
+    app.contact().modify(index, contact);
+    List <ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(index);
