@@ -8,11 +8,8 @@ public class ContactDeletingTests extends TestBase {
 
   @Test
   public void testContactDeletion() {
-    if (! app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("Test1", null, null));
-    }
     if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test1"));
+      app.getContactHelper().createContact(new ContactData("Test", "Test", "Test", "TTT", "test", "testcompany", "Russia", "+71231234578", "+79876543210", "test@test.com", "Test4"));
     }
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContacts();

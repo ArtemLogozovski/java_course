@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.javacourse.addressbook.model.ContactData;
+import ru.stqa.javacourse.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
 
@@ -13,6 +14,7 @@ public class ContactHelper extends HelperBase {
   }
 
   NavigationHelper navigationHelper = new NavigationHelper(wd);
+  GroupHelper groupHelper = new GroupHelper(wd);
 
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
@@ -66,6 +68,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public void createContact(ContactData contact) {
+    if (! groupHelper.isThereAGroupWithName(contact.getGroup())) {
+      groupHelper.createGroup(new GroupData (contact.getGroup(), null, null));
+    }
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();

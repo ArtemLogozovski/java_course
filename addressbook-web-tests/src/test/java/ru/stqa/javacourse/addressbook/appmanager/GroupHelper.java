@@ -3,10 +3,12 @@ package ru.stqa.javacourse.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.stqa.javacourse.addressbook.model.ContactData;
 import ru.stqa.javacourse.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GroupHelper extends HelperBase {
 
@@ -60,6 +62,19 @@ public class GroupHelper extends HelperBase {
   public boolean isThereAGroup() {
     navigationHelper.gotoGroupPage();
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public boolean isThereAGroupWithName (String groupName) {
+    navigationHelper.gotoGroupPage();
+    groupName = "Select (" + groupName + ")";
+    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    for (int i = 0; i < elements.size(); i++) {
+      String elementText = String.valueOf(elements.get(i).getAttribute("title"));
+      if (elementText.equals(groupName)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public int getGroupCount() {
